@@ -1,0 +1,82 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --accent: #0969da;
+  --accent-bg: #ddf4ff;
+  --code-bg: #f3f4f6;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181d;
+    --fg: #e6e6e6;
+    --muted: #9ca3af;
+    --line: #343a46;
+    --accent: #58c4dc;
+    --accent-bg: #1f2a33;
+    --code-bg: #23272f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+  line-height: 1.6;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.list {
+  border-right: 1px solid var(--line);
+  padding: 16px;
+}
+
+.list h1 { font-size: 18px; margin: 0 0 12px; }
+.list ol { list-style: none; margin: 0; padding: 0; }
+
+.list a {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.list a:hover { background: var(--code-bg); }
+.list a[aria-current='true'] { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+
+.muted { color: var(--muted); }
+
+.view { padding: 24px; min-width: 0; }
+
+.readme { max-width: 860px; }
+.readme code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+.readme pre { background: var(--code-bg); padding: 12px; border-radius: 8px; overflow-x: auto; }
+.readme pre code { padding: 0; }
+
+.toolbar { display: flex; gap: 8px; justify-content: flex-end; margin: 16px 0 8px; }
+
+.toolbar button {
+  border: 1px solid var(--line);
+  background: var(--code-bg);
+  color: var(--fg);
+  border-radius: 6px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; }
+  .list { border-right: none; border-bottom: 1px solid var(--line); }
+}
